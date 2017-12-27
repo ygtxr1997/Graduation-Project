@@ -45,6 +45,10 @@
     <IncludePath>F:\ffmpeg-3.4.1-win32-dev\include;F:\SDL2-devel-2.0.7-VC\SDL2-2.0.7\include;$(IncludePath)</IncludePath>
     <LibraryPath>F:\ffmpeg-3.4.1-win32-dev\lib;F:\SDL2-devel-2.0.7-VC\SDL2-2.0.7\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>F:\SDL2-devel-2.0.7-VC\SDL2-2.0.7\include;F:\ffmpeg-3.4.1-win32-dev\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\ffmpeg-3.4.1-win32-dev\lib;F:\SDL2-devel-2.0.7-VC\SDL2-2.0.7\lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -65,11 +69,15 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>avutil.lib;avcodec.lib;avformat.lib;swresample.lib;SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+      <AdditionalOptions>/SAFESEH:NO %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
